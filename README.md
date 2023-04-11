@@ -269,6 +269,33 @@ GraphQL allows you to request `__typename`, a meta field, at any point in a quer
 }
 ```
 
+## The input type in a GraphQL
+
+The input type in a GraphQL schema is a special object type that groups a set of arguments together, and can then be used as an argument to another field. Using input types helps us group and understand arguments, especially for mutations.
+
+Using input types helps us group and understand arguments, especially for mutations.
+
+Example:
+```
+input SearchListingsInput {
+  checkInDate: String!
+  checkOutDate: String!
+  numOfBeds: Int
+  page: Int
+  limit: Int
+  sortBy: SortByCriteria # this is an enum type
+}
+
+// use it
+
+type Query {
+  # ...
+  "Search results for listings that fit the criteria provided"
+  searchListings(criteria: SearchListingsInput): [Listing]! 
+  # ...
+}
+```
+
 ## Resources
 
 https://graphql.org/learn/queries/
