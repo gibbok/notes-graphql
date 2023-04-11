@@ -94,4 +94,11 @@ Fragments are frequently used to split complicated application data requirements
 
 It is possible for fragments to access variables declared in the query or mutation.
 
+## Operation name
+
+The operation type is either query, mutation, or subscription and describes what type of operation you're intending to do. 
+
+The operation type is required unless you're using the query shorthand syntax.
+
+It is only required in multi-operation documents, but its use is encouraged because it is very helpful for debugging and server-side logging.
 
