@@ -108,6 +108,8 @@ In most applications, the arguments to fields will be dynamic but wouldn't be a 
  
 GraphQL instead can pass values of of the query by passing as dicionary, these values are called variables.
 
+In this way we can simply pass a different variable rather than needing to construct an entirely new query.
+
 ```
 // query
 query HeroNameAndFriends($episode: Episode) {
@@ -120,7 +122,7 @@ query HeroNameAndFriends($episode: Episode) {
 }
 // variables
 {
-  "episode": "JEDI"
+  "episode": "JEDI" // change this value
 }
 // result json
 {
