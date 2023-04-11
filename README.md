@@ -30,3 +30,31 @@ At is simplest, GraphQL is about asking for specific fields on objects, the quer
 > GraphQL queries can traverse related objects and their fields, letting clients fetch lots of related data in one request, instead of making several roundtrips as one would need in a classic REST architecture.
 
 GraphQL queries look the same for both single items or lists of items; however, we know which one to expect based on what is indicated in the schema.
+
+
+## Arguments
+
+In GraphQL, every field and nested object can get its own set of arguments, making GraphQL a complete replacement for making multiple API fetches.
+
+Arguments can be of many different types.
+
+GraphQL server can also declare its own custom types, as long as they can be serialized into your transport format.
+
+```
+{
+  human(id: "1000") {
+    name
+    height
+  }
+}
+
+{
+  "data": {
+    "human": {
+      "name": "Luke Skywalker",
+      "height": 1.72
+    }
+  }
+}
+
+```
