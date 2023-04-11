@@ -56,5 +56,34 @@ GraphQL server can also declare its own custom types, as long as they can be ser
     }
   }
 }
+```
+
+## Aliases
+
+The result object fields match the name of the field in the query but don't include arguments, you can't directly query for the same field with different arguments. 
+
+Are used to avoid conflicts as we can rename the results.
 
 ```
+{
+  empireHero: hero(episode: EMPIRE) {
+    name
+  }
+  jediHero: hero(episode: JEDI) {
+    name
+  }
+}
+{
+  "data": {
+    "empireHero": {
+      "name": "Luke Skywalker"
+    },
+    "jediHero": {
+      "name": "R2-D2"
+    }
+  }
+}
+
+```
+
+
