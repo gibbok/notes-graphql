@@ -4,6 +4,8 @@ GraphQL is a query language for your API, and a server-side runtime for executin
 
 GraphQL is created by defined types and fields, then providing functions for each field:
 
+Notes: a GraphQL is necessary for each endpoint.
+
 ```
 type Query {
   me: User
