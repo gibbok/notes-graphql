@@ -166,6 +166,7 @@ query HeroNameAndFriends($episode: Episode = JEDI) {
 
 Allow to  dynamically change the structure and shape of our queries using variables. 
 
+A directive can be attached to a field or fragment inclusion, and can affect execution of the query in any way the server desires.
 
 ```
 query Hero($episode: Episode, $withFriends: Boolean!) {
