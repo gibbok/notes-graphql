@@ -197,3 +197,32 @@ query Hero($episode: Episode, $withFriends: Boolean!) {
 They are used to modify service-side data.
 
 > In REST, any request might end up causing some side-effects on the server, but by convention it's suggested that one doesn't use GET requests to modify data. GraphQL is simila.
+
+If the mutation field returns an object type, you can ask for nested fields. This can be useful for fetching the new state of an object after an update, so it is possible to mutate and query the new value of the field with one request.
+
+A mutation can contain multiple fields, just like a query.
+
+> While query fields are executed in parallel, mutation fields run in series, one after the other, this assure we do not get race conditions.
+
+## Inline Fragments
+
+GraphQL schemas include the ability to define interfaces and union types.
+If you are querying a field that returns an interface or a union type, you will need to use inline fragments to access data on the underlying concrete type. This is done using the `on`.
+
+```
+query HeroForEpisode($ep: Episode!) {
+  hero(episode: $ep) {
+    name
+    ... on Droid {
+      primaryFunction
+    }
+    ... on Human {
+      height
+    }
+  }
+}
+```
+
+To ask for a field on the concrete type, you need to use an inline fragment with a type condition. Because the first fragment is labeled as ... on Droid, the primaryFunction field will only be executed if the Character returned from hero is of the Droid type. Similarly for the height field for the Human type.
+
+
