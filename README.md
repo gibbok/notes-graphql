@@ -86,4 +86,8 @@ Are used to avoid conflicts as we can rename the results.
 
 ```
 
+## Fragments
 
+Fragment are reusable units. A fragment let me create a set of fields to include theme in queries.
+
+Fragments are frequently used to split complicated application data requirements into smaller chunks, especially when you need to combine lots of UI components with different fragments into one initial data fetch.
