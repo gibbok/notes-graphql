@@ -263,3 +263,7 @@ GraphQL allows you to request `__typename`, a meta field, at any point in a quer
 }
 ```
 
+## Resources
+
+https://graphql.org/learn/queries/
+
