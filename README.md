@@ -226,10 +226,9 @@ To ask for a field on the concrete type, you need to use an inline fragment with
 
 ## Meta fields
 
-GraphQL allows you to request `__typename`, a meta field, at any point in a query to get the name of the object type at that point. This is useful wje we do don't know what type is returned by the service.
+GraphQL allows you to request `__typename`, a meta field, at any point in a query to get the name of the object type at that point. This is useful when we do don't know what type is returned by the service and we need get more information on an union for instance.
 
 ```
-
   search(text: "an") {
     __typename
     ... on Human {
@@ -263,4 +262,4 @@ GraphQL allows you to request `__typename`, a meta field, at any point in a quer
   }
 }
 ```
-```
+
