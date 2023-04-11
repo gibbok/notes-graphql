@@ -189,7 +189,6 @@ query Hero($episode: Episode, $withFriends: Boolean!) {
   "episode": "JEDI",
   "withFriends":true // change the result based on this variable
 }
-
 ```
 
 ## Mutations
@@ -225,4 +224,43 @@ query HeroForEpisode($ep: Episode!) {
 
 To ask for a field on the concrete type, you need to use an inline fragment with a type condition. Because the first fragment is labeled as ... on Droid, the primaryFunction field will only be executed if the Character returned from hero is of the Droid type. Similarly for the height field for the Human type.
 
+## Meta fields
 
+GraphQL allows you to request `__typename`, a meta field, at any point in a query to get the name of the object type at that point. This is useful wje we do don't know what type is returned by the service.
+
+```
+
+  search(text: "an") {
+    __typename
+    ... on Human {
+      name
+    }
+    ... on Droid {
+      name
+    }
+    ... on Starship {
+      name
+    }
+  }
+}
+
+{
+  "data": {
+    "search": [
+      {
+        "__typename": "Human",
+        "name": "Han Solo"
+      },
+      {
+        "__typename": "Human",
+        "name": "Leia Organa"
+      },
+      {
+        "__typename": "Starship",
+        "name": "TIE Advanced x1"
+      }
+    ]
+  }
+}
+```
+```
