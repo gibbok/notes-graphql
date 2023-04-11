@@ -168,6 +168,13 @@ Allow to  dynamically change the structure and shape of our queries using variab
 
 A directive can be attached to a field or fragment inclusion, and can affect execution of the query in any way the server desires.
 
+The core GraphQL specification includes exactly two directives, which must be supported by any spec-compliant GraphQL server implementation:
+
+@include(if: Boolean) Only include this field in the result if the argument is true.
+@skip(if: Boolean) Skip this field if the argument is true.
+
+Directives are useful in order to avoid string manipolation to add and remove fields in your query.
+
 ```
 query Hero($episode: Episode, $withFriends: Boolean!) {
   hero(episode: $episode) {
@@ -184,3 +191,9 @@ query Hero($episode: Episode, $withFriends: Boolean!) {
 }
 
 ```
+
+## Mutations
+
+They are used to modify service-side data.
+
+> In REST, any request might end up causing some side-effects on the server, but by convention it's suggested that one doesn't use GET requests to modify data. GraphQL is simila.
