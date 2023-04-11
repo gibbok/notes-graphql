@@ -310,6 +310,9 @@ Alternative methods to pass a bearer token in GraphQL besides adding an Authoriz
 
 - A middleware function that intercepts the HTTP request before it reaches the GraphQL server and adds the Authorization header with the bearer token. This approach can be useful if you're using a third-party library or service to handle authentication and don't want to modify your GraphQL schema.
 
+> Delegate authorization logic to the business logic layer not on the GraphQL layer.
+
+
 
 ## Resources
 
