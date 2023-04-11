@@ -302,9 +302,13 @@ type Query {
 In a REST API, authentication is often handled with a header, that contains an auth token which proves what user is making this request.
 The same applies to GraphQL as the token can be passed in the header.
 
-GraphQL offers very granular control over data. In GraphQL servers, individual field resolvers have the ability to check user roles and make decisions as to what to return for each user. 
+GraphQL offers very granular control over data. In GraphQL servers, individual field resolvers have the ability to check user roles and make decisions as to what to return for each user.
 
+Alternative methods to pass a bearer token in GraphQL besides adding an Authorization header to the HTTP request.
 
+- Include the token directly in the GraphQL query using a custom GraphQL directive. This approach is often referred to as "schema stitching" and can be useful when you have multiple services that require authentication with different token formats.
+
+- A middleware function that intercepts the HTTP request before it reaches the GraphQL server and adds the Authorization header with the bearer token. This approach can be useful if you're using a third-party library or service to handle authentication and don't want to modify your GraphQL schema.
 
 
 ## Resources
