@@ -34,6 +34,10 @@ At is simplest, GraphQL is about asking for specific fields on objects, the quer
 GraphQL queries look the same for both single items or lists of items; however, we know which one to expect based on what is indicated in the schema.
 
 
+### Advantage
+
+> Instead of doing one API request to get basic information about an object, and then multiple subsequent API requests to find out more information about that object like in REST, you can get all of that information in one API request. That saves bandwidth, makes your app run faster, and simplifies your client-side logic.
+
 ## Arguments
 
 In GraphQL, every field and nested object can get its own set of arguments, making GraphQL a complete replacement for making multiple API fetches.
