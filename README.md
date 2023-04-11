@@ -296,6 +296,17 @@ type Query {
 }
 ```
 
+
+## Authentication
+
+In a REST API, authentication is often handled with a header, that contains an auth token which proves what user is making this request.
+The same applies to GraphQL as the token can be passed in the header.
+
+GraphQL offers very granular control over data. In GraphQL servers, individual field resolvers have the ability to check user roles and make decisions as to what to return for each user. 
+
+
+
+
 ## Resources
 
 https://graphql.org/learn/queries/
