@@ -110,6 +110,10 @@ GraphQL instead can pass values of of the query by passing as dicionary, these v
 
 In this way we can simply pass a different variable rather than needing to construct an entirely new query.
 
+All declared variables must be either scalars, enums, or input object types.
+
+Variable definitions can be optional or required.
+
 ```
 // query
 query HeroNameAndFriends($episode: Episode) {
@@ -144,4 +148,21 @@ query HeroNameAndFriends($episode: Episode) {
   }
 }
 ```
+
+Default values can also be assigned to the variables
+
+```
+query HeroNameAndFriends($episode: Episode = JEDI) {
+  hero(episode: $episode) {
+    name
+    friends {
+      name
+    }
+  }
+}
+```
+
+## Directives
+
+Allow to  dynamically change the structure and shape of our queries using variables. 
  
