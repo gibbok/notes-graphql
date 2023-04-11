@@ -318,3 +318,4 @@ Alternative methods to pass a bearer token in GraphQL besides adding an Authoriz
 
 https://graphql.org/learn/queries/
 
+https://the-guild.dev/blog/graphql-modules-auth
