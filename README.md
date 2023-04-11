@@ -165,4 +165,21 @@ query HeroNameAndFriends($episode: Episode = JEDI) {
 ## Directives
 
 Allow to  dynamically change the structure and shape of our queries using variables. 
- 
+
+
+```
+query Hero($episode: Episode, $withFriends: Boolean!) {
+  hero(episode: $episode) {
+    name
+    friends @include(if: $withFriends) {
+      name
+    }
+  }
+}
+// variable
+{
+  "episode": "JEDI",
+  "withFriends":true // change the result based on this variable
+}
+
+```
