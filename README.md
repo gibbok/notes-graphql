@@ -102,3 +102,44 @@ The operation type is required unless you're using the query shorthand syntax.
 
 It is only required in multi-operation documents, but its use is encouraged because it is very helpful for debugging and server-side logging.
 
+## Variables
+
+In most applications, the arguments to fields will be dynamic but wouldn't be a good idea to pass these dynamic arguments directly in the query string, because then our client-side code would need to dynamically manipulate the query string at runtime, and serialize it into a GraphQL-specific format.
+ 
+GraphQL instead can pass values of of the query by passing as dicionary, these values are called variables.
+
+```
+// query
+query HeroNameAndFriends($episode: Episode) {
+  hero(episode: $episode) {
+    name
+    friends {
+      name
+    }
+  }
+}
+// variables
+{
+  "episode": "JEDI"
+}
+// result json
+{
+  "data": {
+    "hero": {
+      "name": "R2-D2",
+      "friends": [
+        {
+          "name": "Luke Skywalker"
+        },
+        {
+          "name": "Han Solo"
+        },
+        {
+          "name": "Leia Organa"
+        }
+      ]
+    }
+  }
+}
+```
+ 
