@@ -483,5 +483,62 @@ myField: ["a", null, "b"] // valid
 ```
 union SearchResult = Human | Droid | Starship
 ```
+
+ Note that members of a union type need to be concrete object types; you can't create a union type out of interfaces or other unions.
  
+ ```
+ {
+  search(text: "an") {
+    __typename
+    ... on Human {
+      name
+      height
+    }
+    ... on Droid {
+      name
+      primaryFunction
+    }
+    ... on Starship {
+      name
+      length
+    }
+  }
+}
+
+{
+  "data": {
+    "search": [
+      {
+        "__typename": "Human",
+        "name": "Han Solo",
+        "height": 1.8
+      },
+      {
+        "__typename": "Human",
+        "name": "Leia Organa",
+        "height": 1.5
+      },
+      {
+        "__typename": "Starship",
+        "name": "TIE Advanced x1",
+        "length": 9.2
+      }
+    ]
+  }
+}
  
+ ```
+ 
+ The __typename field resolves to a String which lets you differentiate different data types from each other on the client.
+ 
+## Input types
+ 
+You can also easily pass complex objects. This is particularly valuable in the case of mutations where you might want to pass in a whole object to be created.
+
+
+
+
+
+
+
+
