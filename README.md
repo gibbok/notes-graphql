@@ -683,8 +683,6 @@ Pagination can be implemented using something like:
 
 Cursor-based pagination is the most powerful of those designed (by making the cursor the offset or the ID and use base64 encoding them)
 
-
-Example with an `edge` if there is information that is specific to the edge, rather than to one of the objects.
 ```
 {
   hero {
@@ -703,6 +701,9 @@ Example with an `edge` if there is information that is specific to the edge, rat
 ```
 
 A connection object are used to provide additional information on the connection like totals and so on for instance:
+
+Example with an `edge` if there is information that is specific to the edge, rather than to one of the objects.
+The node rappresent the object info we want the cursor are kept in a different place.
 
 ```
 {
@@ -724,6 +725,13 @@ A connection object are used to provide additional information on the connection
   }
 }
 ```
+
+This allow us to: 
+
+- paginate through the list
+- ask for information about the connection itself, like totalCount or pageInfo.
+- information about the edge itself, like cursor or friendshipTime.
+
 
 GraphQL is designed in a way that allows you to write clean code on the server, where every field on every type has a focused single-purpose function for resolving that value. However without additional consideration, a naive GraphQL service could be very "chatty" or repeatedly load data from your databases. This is commonly solved by a batching technique, where multiple requests for data from a backend are collected over a short period of time and then dispatched in a single request to an underlying database or microservice by using a tool like Facebook's DataLoader.
 
