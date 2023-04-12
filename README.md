@@ -6,6 +6,10 @@ GraphQL is created by defined types and fields, then providing functions for eac
 
 Resolver in GraphQL can be done for fields or endpoints.
 
+> GraphQL query language is basically about selecting fields on objects.
+
+The shape of a GraphQL query closely matches the result, you can predict what the query will return without knowing that much about the server.
+
 ```
 type Query {
   me: User
@@ -37,6 +41,7 @@ GraphQL queries look the same for both single items or lists of items; however, 
 ### Advantage
 
 > Instead of doing one API request to get basic information about an object, and then multiple subsequent API requests to find out more information about that object like in REST, you can get all of that information in one API request. That saves bandwidth, makes your app run faster, and simplifies your client-side logic.
+
 
 ## Arguments
 
@@ -331,3 +336,20 @@ Alternative methods to pass a bearer token in GraphQL besides adding an Authoriz
 https://graphql.org/learn/queries/
 
 https://the-guild.dev/blog/graphql-modules-auth
+
+
+## GraphQL schema language
+
+Every GraphQL service defines a set of types which completely describe the set of possible data you can query on that service. Then, when queries come in, they are validated and executed against that schema.
+
+GraphQL services can be written in any language.
+
+The most basic components of a GraphQL schema are object types
+
+```
+type Character { // Objet Type (type with some fields)
+  name: String! // field String is a built-in scalar type, the ! means not nullable (otherwise all fields are nullable by default)
+  appearsIn: [Episode!]! // array ! means not nullable
+}
+``
+
