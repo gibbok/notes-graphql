@@ -629,6 +629,101 @@ GraphQL only returns the data that's explicitly requested, so new capabilities c
 In a GraphQL type system, every field is nullable by default. This is because there are many things that can go awry in a networked service backed by databases and other services. A database could go down, an asynchronous action could fail, an exception could be thrown. Beyond simply system failures, authorization can often be granular, where individual fields within a request can have different authorization rules. By defaulting every field to nullable, any of these reasons may result in just that field returned "null" rather than having a complete failure for the request. By defaulting every field to nullable, any of these reasons may result in just that field returned "null" rather than having a complete failure for the request. 
 
 Typically fields that could return long lists accept arguments "first" and "after" to allow for specifying a specific region of a list, where "after" is a unique identifier of each of the values in the list.Ultimately designing APIs with feature-rich pagination led to a best practice pattern called "Connections". Some client tools for GraphQL, such as Relay, know about the Connections pattern and can automatically provide support for client-side pagination when a GraphQL API employs this pattern.
+Different pagination models enable different client capabilities there are different ways, like Plurals:
+
+```
+{
+  hero {
+    name
+    friends {
+      name
+    }
+  }
+}
+
+{
+  "data": {
+    "hero": {
+      "name": "R2-D2",
+      "friends": [
+        {
+          "name": "Luke Skywalker"
+        },
+        {
+          "name": "Han Solo"
+        },
+        {
+          "name": "Leia Organa"
+        }
+      ]
+    }
+  }
+}
+```
+
+Or Slicing:
+A client might want to be able to specify how many friends they want to fetch; maybe they only want the first two:
+
+```
+{
+  hero {
+    name
+    friends(first: 2) {
+      name
+    }
+  }
+}
+```
+
+Pagination can be implemented using something like:
+
+- We could do something like friends(first:2 offset:2) to ask for the next two in the list.
+- We could do something like friends(first:2 after:$friendId), to ask for the next two after the last friend we fetched.
+- We could do something like friends(first:2 after:$friendCursor), where we get a cursor from the last item and use that to paginate.
+
+Cursor-based pagination is the most powerful of those designed (by making the cursor the offset or the ID and use base64 encoding them)
+
+
+Example with an `edge` if there is information that is specific to the edge, rather than to one of the objects.
+```
+{
+  hero {
+    name
+    friends(first: 2) {
+      edges {
+        node {
+          name
+        }
+        cursor
+      }
+    }
+  }
+}
+
+```
+
+A connection object are used to provide additional information on the connection like totals and so on for instance:
+
+```
+{
+  hero {
+    name
+    friendsConnection(first: 2, after: "Y3Vyc29yMQ==") {
+      totalCount
+      edges {
+        node {
+          name
+        }
+        cursor
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+    }
+  }
+}
+```
 
 GraphQL is designed in a way that allows you to write clean code on the server, where every field on every type has a focused single-purpose function for resolving that value. However without additional consideration, a naive GraphQL service could be very "chatty" or repeatedly load data from your databases. This is commonly solved by a batching technique, where multiple requests for data from a backend are collected over a short period of time and then dispatched in a single request to an underlying database or microservice by using a tool like Facebook's DataLoader.
 
