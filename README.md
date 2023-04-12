@@ -615,5 +615,5 @@ By querying the `__schema` field, always available on the root type of a Query i
 
 Double underscore, indicating that they are part of the introspection system the others are type system and built-in scalars.
 
-
+Introspection system particularly useful for tooling.
 
