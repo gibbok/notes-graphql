@@ -104,9 +104,6 @@ query GetEntries {
 
 https://devinschulz.com/rename-fields-by-using-aliases-in-graphql/
 
-
-```
-
 ## Fragments
 
 Fragment are reusable units. A fragment let me create a set of fields to include theme in queries.
