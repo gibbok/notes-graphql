@@ -541,7 +541,11 @@ Type system, it can be predetermined whether a GraphQL query is valid or not. Th
 
 Validation rules in place to ensure that a GraphQL query is semantically meaningful
 
+##  Execution
 
+After being validated, a GraphQL query is executed by a GraphQL server which returns a result that mirrors the shape of the requested query, typically as JSON.
 
+GraphQL cannot execute a query without a type system.
 
+> You can think of each field in a GraphQL query as a function or method of the previous type which returns the next type. In fact, this is exactly how GraphQL works. Each field on each type is backed by a function called the resolver which is provided by the GraphQL server developer. When a field is executed, the corresponding resolver is called to produce the next value. If a field produces a scalar value like a string or number, then the execution completes. However if a field produces an object value then the query will contain another selection of fields which apply to that object. This continues until scalar values are reached. GraphQL queries always end at scalar values.
 
