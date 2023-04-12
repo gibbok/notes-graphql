@@ -344,6 +344,9 @@ Every GraphQL service defines a set of types which completely describe the set o
 
 GraphQL services can be written in any language.
 
+
+### Object types and fields
+
 The most basic components of a GraphQL schema are object types
 
 ```
@@ -352,4 +355,22 @@ type Character { // Objet Type (type with some fields)
   appearsIn: [Episode!]! // array ! means not nullable
 }
 ``
+
+### Arguments
+
+Every field on a GraphQL object type can have zero or more arguments. 
+
+All arguments are named.
+
+Arguments can be either required or optional, if optional we can define a default value.
+
+```
+type Starship {
+  id: ID!
+  name: String!
+  length(unit: LengthUnit = METER): Float
+}
+```
+
+
 
