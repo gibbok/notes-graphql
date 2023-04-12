@@ -90,6 +90,20 @@ Are used to avoid conflicts as we can rename the results.
   }
 }
 
+Aliases can be used also to rename fields for instance we can use rename to camel case like:
+
+```
+query GetEntries {
+  entries {
+    id
+    updatedAt: updated_at
+  }
+}
+```
+
+https://devinschulz.com/rename-fields-by-using-aliases-in-graphql/
+
+
 ```
 
 ## Fragments
