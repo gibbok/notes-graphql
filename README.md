@@ -609,5 +609,11 @@ Human: {
 
 As each field is resolved, the resulting value is placed into a key-value map with the field name (or alias) as the key and the resolved value as the value. This continues from the bottom leaf fields of the query all the way back up to the original field on the root Query type. Collectively these produce a structure that mirrors the original query which can then be sent (typically as JSON) to the client which requested it.
 
+## Introspection
+
+By querying the `__schema` field, always available on the root type of a Query it is possible to introspect the schema.
+
+Double underscore, indicating that they are part of the introspection system the others are type system and built-in scalars.
+
 
 
