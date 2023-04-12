@@ -535,8 +535,11 @@ union SearchResult = Human | Droid | Starship
  
 You can also easily pass complex objects. This is particularly valuable in the case of mutations where you might want to pass in a whole object to be created.
 
+## Validation
 
+Type system, it can be predetermined whether a GraphQL query is valid or not. This allows servers and clients to effectively inform developers when an invalid query has been created, without having to rely on runtime checks.
 
+Validation rules in place to ensure that a GraphQL query is semantically meaningful
 
 
 
