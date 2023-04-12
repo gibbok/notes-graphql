@@ -748,3 +748,6 @@ This id should be a globally unique identifier for this object, and given just t
 In GraphQL, there's no URL-like primitive that provides this globally unique identifier for a given object. It's hence a best practice for the API to expose such an identifier for clients to use.
 
 In the same way that the URLs of a resource-based API provided a globally unique key, the id field in this system provides a globally unique key.
+
+
+https://github.com/graphql/dataloader
