@@ -354,7 +354,7 @@ type Character { // Objet Type (type with some fields)
   name: String! // field String is a built-in scalar type, the ! means not nullable (otherwise all fields are nullable by default)
   appearsIn: [Episode!]! // array ! means not nullable
 }
-``
+```
 
 ### Arguments
 
@@ -371,6 +371,41 @@ type Starship {
   length(unit: LengthUnit = METER): Float
 }
 ```
+
+### The Query and Mutation types
+
+Every GraphQL service has a query type and may or may not have a mutation type. 
+
+These types are the same as a regular object type, but they are special because they define the entry point of every GraphQL query.
+ 
+```
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+query {
+  hero {
+    name
+  }
+  droid(id: "2000") {
+    name
+  }
+}
+```
+
+That means that the GraphQL service needs to have a Query type with hero and droid fields:
+ 
+ ```
+ type Query {
+  hero(episode: Episode): Character
+  droid(id: ID!): Droid
+}
+ ```
+ 
+Mutations work in a similar way - you define fields on the Mutation type, and those are available as the root mutation fields you can call in your query.
+
+Query and Mutation types are the same as any other GraphQL object type, and their fields work exactly the same way.
 
 
 
