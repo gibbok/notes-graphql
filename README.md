@@ -735,3 +735,16 @@ This allow us to:
 
 GraphQL is designed in a way that allows you to write clean code on the server, where every field on every type has a focused single-purpose function for resolving that value. However without additional consideration, a naive GraphQL service could be very "chatty" or repeatedly load data from your databases. This is commonly solved by a batching technique, where multiple requests for data from a backend are collected over a short period of time and then dispatched in a single request to an underlying database or microservice by using a tool like Facebook's DataLoader.
 
+## Caching
+
+> Providing Object Identifiers allows clients to build rich caches
+
+GraphQL servers need to expose object identifiers in a standardized way.
+
+The server must provide an interface called Node. That interface must include exactly one field, called id that returns a non-null ID.
+
+This id should be a globally unique identifier for this object, and given just this id, the server should be able to refetch the object.
+
+In GraphQL, there's no URL-like primitive that provides this globally unique identifier for a given object. It's hence a best practice for the API to expose such an identifier for clients to use.
+
+In the same way that the URLs of a resource-based API provided a globally unique key, the id field in this system provides a globally unique key.
