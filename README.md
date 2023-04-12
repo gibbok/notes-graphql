@@ -549,3 +549,65 @@ GraphQL cannot execute a query without a type system.
 
 > You can think of each field in a GraphQL query as a function or method of the previous type which returns the next type. In fact, this is exactly how GraphQL works. Each field on each type is backed by a function called the resolver which is provided by the GraphQL server developer. When a field is executed, the corresponding resolver is called to produce the next value. If a field produces a scalar value like a string or number, then the execution completes. However if a field produces an object value then the query will contain another selection of fields which apply to that object. This continues until scalar values are reached. GraphQL queries always end at scalar values.
 
+## Root fields & resolvers
+
+At the top level of every GraphQL server is a type that represents all of the possible entry points into the GraphQL API, it's often called the Root type or the Query type.
+
+JavaScript example:
+```
+Query: {
+  human(obj, args, context, info) {
+    return context.db.loadHumanByID(args.id).then(
+      userData => new Human(userData)
+    )
+  }
+}
+```
+
+- obj The previous object, which for a field on the root Query type is often not used.
+- args The arguments provided to the field in the GraphQL query.
+- context A value which is provided to every resolver and holds important contextual information like the currently logged in user, or access to a database.
+- info A value which holds field-specific information relevant to the current query 
+
+## Asynchronous resolvers
+
+Example:
+
+```
+human(obj, args, context, info) {
+  return context.db.loadHumanByID(args.id).then(
+    userData => new Human(userData)
+ 
+```
+
+The context is used to provide access to a database. Notice that while the resolver function needs to be aware of Promises, the GraphQL query does not.
+
+A GraphQL server is powered by a type system which is used to determine what to do next.
+
+## Scalar coercion
+
+For conversion of scalatype for instance convert Enumb values to numbers.
+
+## List resolvers
+
+In this example. The resolver for this field is not just returning a Promise, it's returning a list of Promises. GraphQL will wait for all of these Promises concurrently before continuing, and when left with a list of objects, it will concurrently continue yet again to load the name field on each of these items.
+
+```
+Human: {
+  starships(obj, args, context, info) {
+    return obj.starshipIDs.map(
+      id => context.db.loadStarshipByID(id).then(
+        shipData => new Starship(shipData)
+      )
+    )
+  }
+}
+
+```
+
+## Producing the result 
+
+As each field is resolved, the resulting value is placed into a key-value map with the field name (or alias) as the key and the resolved value as the value. This continues from the bottom leaf fields of the query all the way back up to the original field on the root Query type. Collectively these produce a structure that mirrors the original query which can then be sent (typically as JSON) to the client which requested it.
+
+
+
