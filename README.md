@@ -37,6 +37,7 @@ At is simplest, GraphQL is about asking for specific fields on objects, the quer
 
 GraphQL queries look the same for both single items or lists of items; however, we know which one to expect based on what is indicated in the schema.
 
+GraphQL is typically served over HTTP via a single endpoint which expresses the full set of capabilities of the service. This is in contrast to REST APIs which expose a suite of URLs each of which expose a single resource.
 
 ### Advantage
 
@@ -616,4 +617,18 @@ By querying the `__schema` field, always available on the root type of a Query i
 Double underscore, indicating that they are part of the introspection system the others are type system and built-in scalars.
 
 Introspection system particularly useful for tooling.
+
+## Best pacticsing
+
+GraphQL services typically respond using JSON, however the GraphQL spec does not require it. JSON may seem like an odd choice for an API layer promising better network performance, however because it is mostly text, it compresses exceptionally well with GZIP.
+
+GraphQL takes a strong opinion on avoiding versioning by providing the tools for the continuous evolution of a GraphQL schema.
+
+GraphQL only returns the data that's explicitly requested, so new capabilities can be added via new types and new fields on those types without creating a breaking change. This has led to a common practice of always avoiding breaking changes and serving a versionless API.
+
+In a GraphQL type system, every field is nullable by default. This is because there are many things that can go awry in a networked service backed by databases and other services. A database could go down, an asynchronous action could fail, an exception could be thrown. Beyond simply system failures, authorization can often be granular, where individual fields within a request can have different authorization rules. By defaulting every field to nullable, any of these reasons may result in just that field returned "null" rather than having a complete failure for the request. By defaulting every field to nullable, any of these reasons may result in just that field returned "null" rather than having a complete failure for the request. 
+
+Typically fields that could return long lists accept arguments "first" and "after" to allow for specifying a specific region of a list, where "after" is a unique identifier of each of the values in the list.Ultimately designing APIs with feature-rich pagination led to a best practice pattern called "Connections". Some client tools for GraphQL, such as Relay, know about the Connections pattern and can automatically provide support for client-side pagination when a GraphQL API employs this pattern.
+
+GraphQL is designed in a way that allows you to write clean code on the server, where every field on every type has a focused single-purpose function for resolving that value. However without additional consideration, a naive GraphQL service could be very "chatty" or repeatedly load data from your databases. This is commonly solved by a batching technique, where multiple requests for data from a backend are collected over a short period of time and then dispatched in a single request to an underlying database or microservice by using a tool like Facebook's DataLoader.
 
