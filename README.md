@@ -408,4 +408,80 @@ Mutations work in a similar way - you define fields on the Mutation type, and th
 Query and Mutation types are the same as any other GraphQL object type, and their fields work exactly the same way.
 
 
+## Scalar types
 
+GaphQL comes with a set of default scalar types out of the box:
+
+Int, Float, String, Boolean, ID (unique identifier not human readable)
+
+In some GraphQL implementation is possible to have also Date
+
+
+## Other types
+
+Enum
+```
+enum Episode {
+  NEWHOPE
+  EMPIRE
+  JEDI
+}
+```
+
+List
+`[Type]`
+
+Non-Null
+Using the `!`
+
+
+example:
+
+```
+myField: [String]!
+
+myField: null // error
+myField: [] // valid
+myField: ["a", "b"] // valid
+myField: ["a", null, "b"] // valid
+```
+
+## Interfaces
+
+ An Interface is an abstract type that includes a certain set of fields that a type must include to implement the interface.
+ 
+ This means that any type that implements Character needs to have these exact fields, with these arguments and return types.
+ 
+ ```
+ interface Character {
+  id: ID!
+  name: String!
+  friends: [Character]
+  appearsIn: [Episode]!
+}
+ ```
+ 
+ You can add extra fields on top of an interface:
+ 
+ ```
+ type Human implements Character {
+  id: ID!
+  name: String!
+  friends: [Character]
+  appearsIn: [Episode]!
+  starships: [Starship]
+  totalCredits: Int
+}
+ ```
+ 
+ Interfaces are useful when you want to return an object or set of objects, but those might be of several different types.
+ 
+ ## Union types
+ 
+ Union types are very similar to interfaces, but they don't get to specify any common fields between the types.
+
+```
+union SearchResult = Human | Droid | Starship
+```
+ 
+ 
