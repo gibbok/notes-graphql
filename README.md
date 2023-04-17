@@ -749,5 +749,8 @@ In GraphQL, there's no URL-like primitive that provides this globally unique ide
 
 In the same way that the URLs of a resource-based API provided a globally unique key, the id field in this system provides a globally unique key.
 
-
 https://github.com/graphql/dataloader
+
+## Apollo Client
+
+Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, and modify application data, all while automatically updating your UI.
