@@ -798,3 +798,37 @@ the mutation adds or removes items
 
 the cache doesn't make assumptions about how you would like your collections/arrays of items to change after a mutation. In these cases, we need to decide what the appropriate thing to do is, and we can implement it in the update function of a mutation with either cache.readQuery/writeQuery.
 
+Since Apollo stores data entities using a normalization approach, the data in the cached queries are by reference, not value. 
+
+## Field policy
+
+> Customize how a particular field in your Apollo Client cache is read and written.
+
+```
+const cache = new InMemoryCache({
+  typePolicies: {
+    Employee: {
+      fields: {
+        isWorkFromHome: {
+          read(isWorkFromHome, options) {
+            return isPandemicOn;
+          }
+        }
+      },
+    },
+  },
+});
+```
+The first argument is the existing value in the cache, which we can transform as desired. We can even define policies for new fields that aren’t in the schema:
+
+We can then query for this custom field in our queries using the client directive:
+
+```
+query GetEmployees {
+  employees {
+    id
+    isWorkFromHome @client
+  }
+}
+```
+When Apollo encounters a field marked with the client directive, it knows not to send that field over the network and instead resolve it using our field policies against its cached data.
