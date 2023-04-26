@@ -866,3 +866,10 @@ Nope! It will only re-read data if forceUpdate is called or the options to the h
 
 What happens if another query somewhere else in the app is executed? Will our component re-render? What if it affected the data we care about?
 We now know that when another query triggers a cache write, the cache will broadcast to watchers that might be dirty. 
+
+## Apollo cache dependency graph
+
+Apollo uses a dependency graph that tracks the dependencies of a field as they are read. The dependencies are tracked using the Optimism reactive caching developed by Apollo’s core developers.
+
+The Apollo caching mechanisms and these examples, we can see that Apollo offers powerful built-in performance optimizations that eliminate the need for the sort of client-side memoization akin. 
+
