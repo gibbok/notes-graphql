@@ -772,5 +772,29 @@ Apollo clientit maintains references to the normalized todo items by their uniqu
 This internal data is intended to be easily JSON-serializable.
 https://www.apollographql.com/blog/apollo-client/caching/demystifying-cache-normalization/
 
+There’s a feature called fetch policies. It dictates how the cache behaves when we ask for data that may or may not be cached. The default fetch policy is called cache-first.
 
+The cache can automatically normalize, cache, and update queries, mutations that update a single existing entity, and bulk update mutations that return the entire set of changed items.
+
+The cache splits it into singular objects, creates unique identifiers, and saves each of those items (in addition to the query itself and any the variables included) to the cache.
+
+These types of operations update a single entity in question. No matter what the operation is, as long as we return a new object containing the id and the changed fields, Apollo Client can automatically update the item in the cache and trigger a re-render to the UI.
+
+In essence, it doesn't matter if we perform a query or a mutation — if we return a dataset of items in a response, the cache will run the normalization logic against it. This results in either a merge or an addition of a new item to the cache.
+
+Application-specific side-effects are things that you want to happen to the cache after a mutation that may not use anything from the response data.
+
+When building out a mutation, if any one of these is true,
+
+if the side-effect we want to occur has nothing to do with the return data
+we *can't return the entire set of objects changed
+the mutation changes the ordering of a cached collection
+the mutation adds or removes items
+... then we need to write an update function to tell the cache exactly how to update.
+
+> Apollo Client's cache normalizes objects and stores them both flattened on the cache in a list that maintains the order, and points to each of the flattened objects by id.
+
+> Cache is smart enough to update single existing objects on the cache only if we return the new value in the mutation response.
+
+the cache doesn't make assumptions about how you would like your collections/arrays of items to change after a mutation. In these cases, we need to decide what the appropriate thing to do is, and we can implement it in the update function of a mutation with either cache.readQuery/writeQuery.
 
