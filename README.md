@@ -832,3 +832,31 @@ query GetEmployees {
 }
 ```
 When Apollo encounters a field marked with the client directive, it knows not to send that field over the network and instead resolve it using our field policies against its cached data.
+
+We can also create custom client-side fields by defining fields on the Query type:
+
+```
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        readManagers: {
+          read(managers, options) {
+              // TODO
+          }
+        }
+      },
+    },
+  },
+});
+```
+
+> Our client-side readManagers field will read data from the Apollo cache and transform it into whatever shape we need to represent, achieving the same result as with using selectors. 
+
+https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
+
+A canonical field, a field that represents the entire collection of a particular type on the client from which custom filters and views of that data are derived.
+
+
+
+
