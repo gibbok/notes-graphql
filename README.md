@@ -906,3 +906,5 @@ https://blog.apis.guru/query-and-transformation-collocation-with-apollo-client-a
 https://github.com/IvanGoncharov/graphql-lodash
 https://www.apollographql.com/docs/react/local-state/managing-state-with-field-policies/
 https://www.apollographql.com/docs/react/api/link/introduction/
+https://www.youtube.com/watch?v=iNStN6q_5As
+https://www.apollographql.com/docs/react/local-state/local-resolvers
