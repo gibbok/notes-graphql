@@ -888,3 +888,5 @@ Other use cases for a read function include:
 - Deriving local-only fields from one or more schema fields across multiple objects
 
 https://www.apollographql.com/docs/react/caching/advanced-topics/#cache-redirects
+
+https://medium.com/@galen.corey/understanding-apollo-fetch-policies-705b5ad71980
