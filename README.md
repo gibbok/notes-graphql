@@ -765,7 +765,12 @@ Normalization algo in Apollo:
 2. Assigning a logically unique identifier to each object so that the cache can keep track of the entity in a stable way
 3. Storing the objects in a flattened data structure (normalized items)
 
+Uniquely identifying items is important for Apollo Client because that’s the way it keeps track of the same object being returned from multiple queries. It’s how the object’s fields can be merged together over time in the cache.
 
+Apollo clientit maintains references to the normalized todo items by their unique identifiers. This is normalization at work. This is how we keep the size of the cache as small as possible and prevent duplicate data.
+
+This internal data is intended to be easily JSON-serializable.
+https://www.apollographql.com/blog/apollo-client/caching/demystifying-cache-normalization/
 
 
 
