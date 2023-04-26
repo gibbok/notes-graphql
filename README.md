@@ -890,3 +890,5 @@ Other use cases for a read function include:
 https://www.apollographql.com/docs/react/caching/advanced-topics/#cache-redirects
 
 https://medium.com/@galen.corey/understanding-apollo-fetch-policies-705b5ad71980
+
+https://www.apollographql.com/blog/apollo-client/caching/dispatch-this-using-apollo-client-3-as-a-state-management-solution/
