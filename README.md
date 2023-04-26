@@ -873,3 +873,18 @@ Apollo uses a dependency graph that tracks the dependencies of a field as they a
 
 The Apollo caching mechanisms and these examples, we can see that Apollo offers powerful built-in performance optimizations that eliminate the need for the sort of client-side memoization akin. 
 
+## Customizing the behavior of cached fields
+
+https://www.apollographql.com/docs/react/caching/cache-field-behavior/
+
+A read function that specifies what happens when the field's cached value is read
+A merge function that specifies what happens when field's cached value is written
+An array of key arguments that help the cache avoid storing unnecessary duplicate data.
+
+Other use cases for a read function include:
+
+- Transforming cached data to suit your client's needs, such as rounding floating-point values to the nearest integer
+- Deriving local-only fields from one or more schema fields on the same object (such as deriving an age field from a birthDate field)
+- Deriving local-only fields from one or more schema fields across multiple objects
+
+https://www.apollographql.com/docs/react/caching/advanced-topics/#cache-redirects
