@@ -856,7 +856,13 @@ const cache = new InMemoryCache({
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
 
 A canonical field, a field that represents the entire collection of a particular type on the client from which custom filters and views of that data are derived.
+There’s lots of caching and memoization under the hood of the Apollo client that gives our field policies approach good performance out of the box.
 
+How does Apollo trigger a re-render of the component when the query completed?
+Apolo notify the observable.
 
+Will the useQuery hook read data from the cache every time the component re-renders from prop or state changes?
+Nope! It will only re-read data if forceUpdate is called or the options to the hook change.
 
-
+What happens if another query somewhere else in the app is executed? Will our component re-render? What if it affected the data we care about?
+We now know that when another query triggers a cache write, the cache will broadcast to watchers that might be dirty. 
