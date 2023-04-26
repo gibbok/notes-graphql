@@ -756,3 +756,16 @@ https://github.com/graphql/dataloader
 Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, and modify application data, all while automatically updating your UI. It supports declarative data fetching.
 
 > Apollo models its client state using a normalized client-side cache.
+
+> When we perform operations, Apollo Client normalizes the response data before saving it to the cache.
+
+Normalization algo in Apollo:
+
+1. Splitting the results into individual objects
+2. Assigning a logically unique identifier to each object so that the cache can keep track of the entity in a stable way
+3. Storing the objects in a flattened data structure (normalized items)
+
+
+
+
+
