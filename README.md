@@ -895,4 +895,14 @@ https://www.apollographql.com/blog/apollo-client/caching/dispatch-this-using-apo
 
 https://www.youtube.com/watch?v=BmbAR2Mdm4M
 
+## Useful resources:
 
+https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
+https://www.apollographql.com/blog/apollo-client/caching/demystifying-cache-normalization/
+https://www.apollographql.com/blog/apollo-client/caching/dispatch-this-using-apollo-client-3-as-a-state-management-solution/
+https://graphql.org/learn/queries/#aliases
+https://medium.com/@galen.corey/understanding-apollo-fetch-policies-705b5ad71980
+https://blog.apis.guru/query-and-transformation-collocation-with-apollo-client-and-graphql-lodash-9111448ec01b
+https://github.com/IvanGoncharov/graphql-lodash
+https://www.apollographql.com/docs/react/local-state/managing-state-with-field-policies/
+https://www.apollographql.com/docs/react/api/link/introduction/
