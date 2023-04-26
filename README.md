@@ -892,3 +892,7 @@ https://www.apollographql.com/docs/react/caching/advanced-topics/#cache-redirect
 https://medium.com/@galen.corey/understanding-apollo-fetch-policies-705b5ad71980
 
 https://www.apollographql.com/blog/apollo-client/caching/dispatch-this-using-apollo-client-3-as-a-state-management-solution/
+
+https://www.youtube.com/watch?v=BmbAR2Mdm4M
+
+
