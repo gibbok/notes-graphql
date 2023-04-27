@@ -895,6 +895,17 @@ https://www.apollographql.com/blog/apollo-client/caching/dispatch-this-using-apo
 
 https://www.youtube.com/watch?v=BmbAR2Mdm4M
 
+## Apollo Context
+
+Apollo Context is a feature of the Apollo Client, which is a popular library for building data-driven applications with GraphQL. The context allows you to share data and functionality between different parts of your application, such as components, resolvers, and middleware.
+
+In particular, the Apollo Context is an object that can be passed down through the component tree, similar to React's context. It allows you to pass additional data, such as authentication tokens or other configuration options, to the Apollo Client, which can then use that data when making GraphQL requests.
+
+The Apollo Context is particularly useful when you need to access data that is not available through the standard props or state of a component. For example, if you need to pass authentication credentials to the Apollo Client, you can add them to the context object and then access them in your resolvers or middleware.
+
+To use the Apollo Context, you can create a new context object using the createContext function provided by Apollo, and then wrap your component tree with the ApolloProvider component, passing in the context as a prop. This makes the context available to all components that are wrapped by the provider.
+
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
