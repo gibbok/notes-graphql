@@ -917,6 +917,9 @@ Simplest implementation of schema stitching.
 
 The server composes queries for those underlying APIs based on the original query fields, fetches them from the backends, and then composes the result back into the shape of the original query.
 
+### Adding links between types
+
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
