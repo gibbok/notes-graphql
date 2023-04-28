@@ -905,6 +905,17 @@ The Apollo Context is particularly useful when you need to access data that is n
 
 To use the Apollo Context, you can create a new context object using the createContext function provided by Apollo, and then wrap your component tree with the ApolloProvider component, passing in the context as a prop. This makes the context available to all components that are wrapped by the provider.
 
+## Schema stitching
+
+Schema stitching is the idea that you can take two or more GraphQL schemas, and merge them into one endpoint that can pull data from all of them.
+
+> Given some URLs to multiple GraphQL APIs, you want to be able to run a single query that spans across them. (please note the proxy server will make two queries).
+
+### Simple schema merging
+
+Simplest implementation of schema stitching.
+
+The server composes queries for those underlying APIs based on the original query fields, fetches them from the backends, and then composes the result back into the shape of the original query.
 
 ## Useful resources:
 
@@ -919,3 +930,7 @@ https://www.apollographql.com/docs/react/local-state/managing-state-with-field-p
 https://www.apollographql.com/docs/react/api/link/introduction/
 https://www.youtube.com/watch?v=iNStN6q_5As
 https://www.apollographql.com/docs/react/local-state/local-resolvers
+https://www.apollographql.com/blog/backend/graphql-schema-stitching/
+
+
+
