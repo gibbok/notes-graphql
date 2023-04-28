@@ -39,6 +39,10 @@ GraphQL queries look the same for both single items or lists of items; however, 
 
 GraphQL is typically served over HTTP via a single endpoint which expresses the full set of capabilities of the service. This is in contrast to REST APIs which expose a suite of URLs each of which expose a single resource.
 
+- GraphQL can call any backends
+- It make easy to trasverse data
+- We often talk about GraphQL as a gateway to REST, GRPC
+
 ### Advantage
 
 > Instead of doing one API request to get basic information about an object, and then multiple subsequent API requests to find out more information about that object like in REST, you can get all of that information in one API request. That saves bandwidth, makes your app run faster, and simplifies your client-side logic.
@@ -919,6 +923,9 @@ Schema stitching is the idea that you can take two or more GraphQL schemas, and 
 Simplest implementation of schema stitching.
 
 The server composes queries for those underlying APIs based on the original query fields, fetches them from the backends, and then composes the result back into the shape of the original query.
+
+- Ability to create schema via introspection
+- Merge schema, take multiple schema and merge into one
 
 ### Adding links between types
 
