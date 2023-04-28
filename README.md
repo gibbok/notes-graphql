@@ -924,10 +924,12 @@ Simplest implementation of schema stitching.
 
 The server composes queries for those underlying APIs based on the original query fields, fetches them from the backends, and then composes the result back into the shape of the original query.
 
-- Ability to create schema via introspection
+- Ability to create schema via introspection, so you give it an url, the tool will generate the schema
 - Merge schema, take multiple schema and merge into one
 
 ### Adding links between types
+
+Connecte the merged links.
 
 
 ## Useful resources:
