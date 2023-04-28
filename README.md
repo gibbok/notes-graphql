@@ -960,6 +960,31 @@ Federation uses a gateway service to route queries to the appropriate schema bas
 
 In summary, while both schema stitching and federation aim to create a unified GraphQL API from multiple schemas, they differ in how they merge the schemas and handle distributed data sources. Schema stitching merges schemas into a single endpoint, while federation allows you to break up a large schema into smaller, more manageable schemas.
 
+## Extensions
+
+Type Extensions - Type extensions allow you to extend existing GraphQL types with additional fields or interfaces. This can be useful for adding new functionality to an existing API without having to modify the original schema.
+
+## Directives
+
+A directive decorates part of a GraphQL schema or operation with additional configuration. 
+
+Directives are preceded by the @ character, like so:
+
+```
+type ExampleType {
+  oldField: String @deprecated(reason: "Use `newField`.")
+  newField: String
+}
+```
+
+definition:
+
+```
+directive @deprecated(
+  reason: String = "No longer supported"
+) on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION | ENUM_VALUE
+```
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
