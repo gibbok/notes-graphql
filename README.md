@@ -948,6 +948,18 @@ Use subscription when:
 
 Apollo Client supports both graphql-ws
 
+## Schema Stitching vs Federation
+
+Schema stitching and federation are two different approaches for building a unified GraphQL API from multiple schemas. The main difference between them lies in how they combine the schemas and how they handle distributed data sources.
+
+Schema stitching is the process of merging multiple schemas into a single, unified schema. This can be done by creating custom resolvers that delegate queries to the appropriate schema based on the query fields. The resulting schema acts as a single endpoint for clients to interact with.
+
+Federation, on the other hand, is a more distributed approach to building a unified GraphQL API. Instead of merging schemas into a single endpoint, federation allows you to break up a large schema into smaller, more manageable schemas. Each schema can be owned and maintained by a different team or service, but they can all be combined to form a single, federated API.
+
+Federation uses a gateway service to route queries to the appropriate schema based on the query fields. The gateway also handles merging the results from multiple schemas into a single response for the client. This approach allows for a more modular and flexible architecture that can scale more easily as your data sources grow.
+
+In summary, while both schema stitching and federation aim to create a unified GraphQL API from multiple schemas, they differ in how they merge the schemas and handle distributed data sources. Schema stitching merges schemas into a single endpoint, while federation allows you to break up a large schema into smaller, more manageable schemas.
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
