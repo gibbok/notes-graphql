@@ -43,6 +43,9 @@ GraphQL is typically served over HTTP via a single endpoint which expresses the 
 
 > Instead of doing one API request to get basic information about an object, and then multiple subsequent API requests to find out more information about that object like in REST, you can get all of that information in one API request. That saves bandwidth, makes your app run faster, and simplifies your client-side logic.
 
+- Unifies all of you data into one schema and API, all in one place
+- Make fewer requests to get multiple objects
+
 
 ## Arguments
 
