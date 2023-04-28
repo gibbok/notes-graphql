@@ -931,6 +931,22 @@ The server composes queries for those underlying APIs based on the original quer
 
 Connecte the merged links.
 
+## Subscriptions
+
+Get real-time updates from your GraphQL server.
+
+Subscriptions are long-lasting operations that can change their result over time. They can maintain an active connection to your GraphQL server (most commonly via WebSocket), enabling the server to push updates to the subscription's result.
+
+When to use subscriptions:
+
+- In the majority of cases, your client should not use subscriptions to stay up to date with your backend. Instead, you should poll intermittently with queries, or re-execute queries on demand when a user performs a relevant action (such as clicking a button).
+
+Use subscription when:
+
+- Small, incremental changes to large objects.
+- Low-latency, real-time updates.
+
+Apollo Client supports both graphql-ws
 
 ## Useful resources:
 
