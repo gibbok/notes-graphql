@@ -117,6 +117,12 @@ query GetEntries {
 
 https://devinschulz.com/rename-fields-by-using-aliases-in-graphql/
 
+
+- Renaming fields for better readability: Aliases can be used to make the query results more human-readable. 
+- Resolving naming conflicts: In complex data models where different types may have fields with the same name, aliases can be used to disambiguate the fields and avoid naming conflicts.
+- Requesting the same field with different arguments: Aliases can be used to request the same field multiple times with different arguments.
+- Reducing the number of queries: Aliases can be used to request multiple fields or fragments of data in a single query, thereby reducing the number of queries needed to retrieve the desired data.
+
 ## Fragments
 
 Fragment are reusable units. A fragment let me create a set of fields to include theme in queries.
