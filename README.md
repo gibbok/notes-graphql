@@ -1020,4 +1020,4 @@ https://www.apollographql.com/docs/react/local-state/local-resolvers
 https://www.apollographql.com/blog/backend/graphql-schema-stitching/
 https://www.youtube.com/watch?v=DRdnGtW5AcM
 https://medium.com/@calebmer/when-to-use-graphql-non-null-fields-4059337f6fc8
-
+https://medium.com/expedia-group-tech/nullability-in-graphql-b8d06fbd8a3c
