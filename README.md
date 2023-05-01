@@ -1045,3 +1045,4 @@ https://medium.com/expedia-group-tech/nullability-in-graphql-b8d06fbd8a3c
 https://www.apollographql.com/blog/graphql/basics/using-nullability-in-graphql/
 https://www.apollographql.com/blog/backend/schema-design/modularizing-your-graphql-schema-code/
 https://blog.logrocket.com/graphql-modules-tutorial-how-to-modularize-graphql-schema/
+https://www.codesmith.io/blog/graphql-resolvers
