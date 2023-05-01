@@ -43,6 +43,8 @@ GraphQL is typically served over HTTP via a single endpoint which expresses the 
 - It make easy to trasverse data
 - We often talk about GraphQL as a gateway to REST, GRPC
 
+GraphQL queries are made to a single endpoint, as opposed to multiple endpoints in REST. Because of this, clients need to know how to structure their requests to reach the data, rather than simply targeting endpoints. GraphQL back-end developers share this information by creating schemas. Schemas are like maps; they describe all the data and their relationships within a server.
+
 ### Advantage
 
 > Instead of doing one API request to get basic information about an object, and then multiple subsequent API requests to find out more information about that object like in REST, you can get all of that information in one API request. That saves bandwidth, makes your app run faster, and simplifies your client-side logic.
@@ -50,6 +52,15 @@ GraphQL is typically served over HTTP via a single endpoint which expresses the 
 - Unifies all of you data into one schema and API, all in one place
 - Make fewer requests to get multiple objects
 
+### Possible issues
+
+How does GraphQL return data to those fields? It uses resolvers. A resolver is a field-specific function that hunts for the requested data in the server. The server processes the query and the resolvers return data for each field, until it has fetched all the data in the query. Data is returned in the same format and order as the query, in a JSON file.
+
+As great as GraphQL is, it’s prone to encountering an issue, known as the n+1 problem. The n+1 problem arises because GraphQL executes a separate resolver function for every field, whereas REST has one resolver per endpoint. These additional resolvers mean that GraphQL runs the risk of making additional round trips to the database than are necessary for requests.
+
+> The n+1 problem means that the server executes multiple unnecessary round trips to datastores for nested data. 
+
+In REST, costs are predictable because there’s one trip per endpoint requested. In GraphQL, there’s only one endpoint, and it’s not indicative of the potential size of incoming requests. 
 
 ## Arguments
 
@@ -1047,3 +1058,4 @@ https://www.apollographql.com/blog/backend/schema-design/modularizing-your-graph
 https://blog.logrocket.com/graphql-modules-tutorial-how-to-modularize-graphql-schema/
 https://www.codesmith.io/blog/graphql-resolvers
 https://medium.com/paypal-tech/graphql-resolvers-best-practices-cd36fdbcef55
+https://shopify.engineering/solving-the-n-1-problem-for-graphql-through-batching
