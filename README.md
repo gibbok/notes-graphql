@@ -1046,3 +1046,4 @@ https://www.apollographql.com/blog/graphql/basics/using-nullability-in-graphql/
 https://www.apollographql.com/blog/backend/schema-design/modularizing-your-graphql-schema-code/
 https://blog.logrocket.com/graphql-modules-tutorial-how-to-modularize-graphql-schema/
 https://www.codesmith.io/blog/graphql-resolvers
+https://medium.com/paypal-tech/graphql-resolvers-best-practices-cd36fdbcef55
