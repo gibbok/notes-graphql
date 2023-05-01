@@ -1013,6 +1013,15 @@ https://graphql.org/learn/best-practices/#nullability
 
 When using non-null, you need to decide if you’d rather have a partial result, or no result at all.
 
+## Code organization
+
+Consider using GraphQL Modules.
+
+- Reusable modules: Modules are defined by their GraphQL schema in smaller pieces, which you can later move and reuse
+- Scalable structure: Each module has a clearly defined boundary. Modules can communicate between each other using custom messages
+- Clear path to growth: By separating features into modules, it’s easy to see how your application can grow
+- Testability: Testing small pieces of code is easier than testing larger chunks of code.
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
@@ -1032,3 +1041,4 @@ https://medium.com/@calebmer/when-to-use-graphql-non-null-fields-4059337f6fc8
 https://medium.com/expedia-group-tech/nullability-in-graphql-b8d06fbd8a3c
 https://www.apollographql.com/blog/graphql/basics/using-nullability-in-graphql/
 https://www.apollographql.com/blog/backend/schema-design/modularizing-your-graphql-schema-code/
+https://blog.logrocket.com/graphql-modules-tutorial-how-to-modularize-graphql-schema/
