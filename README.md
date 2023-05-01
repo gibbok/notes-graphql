@@ -1016,6 +1016,9 @@ When using non-null, you need to decide if you’d rather have a partial result,
 ## Code organization
 
 Consider using GraphQL Modules.
+https://the-guild.dev/graphql/modules
+
+Mainly useful for the BE side.
 
 - Reusable modules: Modules are defined by their GraphQL schema in smaller pieces, which you can later move and reuse
 - Scalable structure: Each module has a clearly defined boundary. Modules can communicate between each other using custom messages
