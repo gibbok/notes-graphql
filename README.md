@@ -1040,6 +1040,8 @@ Mainly useful for the BE side.
 
 > Apollo Federation is a powerful, open architecture for creating a supergraph that combines multiple GraphQL APIs:
 
+> Federated architecture brings different services together into one API endpoint.
+
 In a federated architecture, your individual GraphQL APIs are called subgraphs, and they're composed into a supergraph. By querying your supergraph's router, clients can fetch data from all of your subgraphs with a single request:
 
 The router serves as the public access point for your supergraph. It receives incoming GraphQL operations and intelligently routes them across your subgraphs. To clients, this looks exactly the same as querying any other GraphQL server—no client-side configuration is required.
@@ -1060,6 +1062,14 @@ Notes: The Apollo Router (recommended): a high-performance, precompiled Rust exe
 
 - Separation of concerns, avoid the GraphQL monolithic code
 - Can reduce performance and productivity bottlenecks 
+
+## Federation vs schema stitching
+
+Schema stitching was the previous solution for microservice architecture. Both federation and schema stitching do offer the same functionality on the surface, gathering multiple services into one unified gateway, but the implementation is different.
+
+With GraphQL federation, you tell the gateway where it needs to look for the different objects and what URLs they live at. The subgraphs provide metadata that the gateway uses to automatically stitch everything together. This is a low-maintenance approach that gives your team a lot of flexibility.
+
+With schema stitching, you must define the “stitching” in the gateway yourself. Your team now has a separate service that needs to be altered, which limits flexibility. The use case for schema stitching is when your underlying services are not all GraphQL. Schema stitching allows you to create a gateway connected to a REST API, for example, while federation only works with GraphQL.
 
 
 ## Useful resources:
@@ -1090,3 +1100,4 @@ https://www.youtube.com/watch?v=gyxYRvfCpAs
 https://www.youtube.com/watch?v=VY2kafBruEs
 https://www.youtube.com/watch?v=ra5WuUvQRIM
 https://www.apollographql.com/docs/federation/
+https://tyk.io/blog/an-introduction-to-graphql-federation/
