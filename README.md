@@ -1004,6 +1004,8 @@ Whenever an error happens in a non-null GraphQL field then that error is propaga
 
 Generally it makes sense to make id non-null because when id is null you’ll typically want this error propagation behavior.
 
+>  if any one non-nullable field defined in your type is ever null, or its resolver throws an exception, the entire query fails
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
