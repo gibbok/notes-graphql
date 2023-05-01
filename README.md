@@ -1036,6 +1036,32 @@ Mainly useful for the BE side.
 - Clear path to growth: By separating features into modules, it’s easy to see how your application can grow
 - Testability: Testing small pieces of code is easier than testing larger chunks of code.
 
+## Apollo Federation
+
+> Apollo Federation is a powerful, open architecture for creating a supergraph that combines multiple GraphQL APIs:
+
+In a federated architecture, your individual GraphQL APIs are called subgraphs, and they're composed into a supergraph. By querying your supergraph's router, clients can fetch data from all of your subgraphs with a single request:
+
+The router serves as the public access point for your supergraph. It receives incoming GraphQL operations and intelligently routes them across your subgraphs. To clients, this looks exactly the same as querying any other GraphQL server—no client-side configuration is required.
+
+Like any other GraphQL API, each subgraph has its own schema:
+
+To communicate with all of your subgraphs, the router uses a special supergraph schema that combines these subgraph schemas.
+
+Supergraph schemas are created via a process called composition. Composition takes all of your subgraph schemas and intelligently combines them into one schema for your router:
+
+In a federated architecture, each subgraph instance is a GraphQL service that's queried only by the router. The router is a separate service that exposes a GraphQL endpoint to external clients.
+
+Clients query the router, and the router then queries individual subgraphs to obtain, combine, and return results:
+
+Notes: The Apollo Router (recommended): a high-performance, precompiled Rust executabe or it can be an instance of Apollo Server
+
+## Benefits
+
+- Separation of concerns, avoid the GraphQL monolithic code
+- Can reduce performance and productivity bottlenecks 
+
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
@@ -1063,3 +1089,4 @@ https://www.parabol.co/blog/graphql-dataloader-cookbook/
 https://www.youtube.com/watch?v=gyxYRvfCpAs
 https://www.youtube.com/watch?v=VY2kafBruEs
 https://www.youtube.com/watch?v=ra5WuUvQRIM
+https://www.apollographql.com/docs/federation/
