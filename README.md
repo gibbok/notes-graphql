@@ -991,6 +991,19 @@ directive @deprecated(
 ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION | ENUM_VALUE
 ```
 
+
+## Cost of non nullable fields
+
+> GraphQL you may have many teams depending on the same API, and more importantly your typing decisions are hard to reverse given the popular “versionless API” nature of GraphQL.
+
+- Non-null fields make it hard to evolve your schema
+If the client never gets null then the code to handle nulls will never run. However, you can never make a non-null field nullable. The code in your GraphQL clients will break the first time they encounter a null because they didn’t know it was possible that a null could be returned from a given field.
+
+- Non-null fields mean small failures have an outsized impact
+Whenever an error happens in a non-null GraphQL field then that error is propagated up to the first nullable field. This means that small errors that may be constrained to a single field end up wiping out what may have been useful data. 
+
+Generally it makes sense to make id non-null because when id is null you’ll typically want this error propagation behavior.
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
@@ -1006,5 +1019,5 @@ https://www.youtube.com/watch?v=iNStN6q_5As
 https://www.apollographql.com/docs/react/local-state/local-resolvers
 https://www.apollographql.com/blog/backend/graphql-schema-stitching/
 https://www.youtube.com/watch?v=DRdnGtW5AcM
-
+https://medium.com/@calebmer/when-to-use-graphql-non-null-fields-4059337f6fc8
 
