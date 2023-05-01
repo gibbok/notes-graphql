@@ -1010,6 +1010,9 @@ Users care that your app is resilient, and nullable fields on your GraphQL types
 
 https://graphql.org/learn/best-practices/#nullability
 
+
+When using non-null, you need to decide if you’d rather have a partial result, or no result at all.
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
@@ -1027,3 +1030,5 @@ https://www.apollographql.com/blog/backend/graphql-schema-stitching/
 https://www.youtube.com/watch?v=DRdnGtW5AcM
 https://medium.com/@calebmer/when-to-use-graphql-non-null-fields-4059337f6fc8
 https://medium.com/expedia-group-tech/nullability-in-graphql-b8d06fbd8a3c
+https://www.apollographql.com/blog/graphql/basics/using-nullability-in-graphql/
+https://www.apollographql.com/blog/backend/schema-design/modularizing-your-graphql-schema-code/
