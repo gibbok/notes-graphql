@@ -1060,3 +1060,6 @@ https://www.codesmith.io/blog/graphql-resolvers
 https://medium.com/paypal-tech/graphql-resolvers-best-practices-cd36fdbcef55
 https://shopify.engineering/solving-the-n-1-problem-for-graphql-through-batching
 https://www.parabol.co/blog/graphql-dataloader-cookbook/
+https://www.youtube.com/watch?v=gyxYRvfCpAs
+
+
