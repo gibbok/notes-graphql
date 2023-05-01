@@ -1006,6 +1006,10 @@ Generally it makes sense to make id non-null because when id is null you’ll ty
 
 >  if any one non-nullable field defined in your type is ever null, or its resolver throws an exception, the entire query fails
 
+Users care that your app is resilient, and nullable fields on your GraphQL types allow portions of your screen to fail gracefully while the rest of the screen remains usable.
+
+https://graphql.org/learn/best-practices/#nullability
+
 ## Useful resources:
 
 https://www.apollographql.com/blog/apollo-client/architecture/redux-to-apollo-data-access-patterns/
