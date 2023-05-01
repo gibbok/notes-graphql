@@ -1062,4 +1062,4 @@ https://shopify.engineering/solving-the-n-1-problem-for-graphql-through-batching
 https://www.parabol.co/blog/graphql-dataloader-cookbook/
 https://www.youtube.com/watch?v=gyxYRvfCpAs
 https://www.youtube.com/watch?v=VY2kafBruEs
-
+https://www.youtube.com/watch?v=ra5WuUvQRIM
